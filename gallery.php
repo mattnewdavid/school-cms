@@ -131,7 +131,7 @@ if (isset($_POST['save_carousel'])) {
         <small>- Images should not be more than 2MB </small><br>
     </div>
     <div class="form-group">
-        <input name="category" placeholder="Category/Event" class="form-control">
+        <input name="category" placeholder="Category/Event Here" class="form-control">
     </div>
     <input name="gallery_file[]" type="file" id="gallery_images" required multiple>
     <button type="submit" name="save_image" class="btn btn-custom text-white">Add to Gallery</button>
