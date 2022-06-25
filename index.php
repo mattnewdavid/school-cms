@@ -164,6 +164,7 @@ if (isset($_SESSION['loginuser'])) {
 
                 </div>
                 <div class="sec-body">
+                    <small class="text-danger">Note: Changes Here reflects directly on the website</small>
                     <?php require('message.php');  ?>
                     <div class="tab-content container">
                         <?php if (isset($_GET['tab'])) {
