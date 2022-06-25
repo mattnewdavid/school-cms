@@ -68,7 +68,7 @@ if (isset($_POST['save_carousel'])) {
             $_SESSION['status'] = "Image uploaded successfully";
             echo ("<script>window.location.href='index.php?tab=gallery';</script>");
         } else {
-            $_SESSION = 'ERROR:' . mysqli_error($db);
+            $_SESSION['error'] = 'ERROR:' . mysqli_error($db);
         }
     }
 }
