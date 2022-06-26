@@ -18,9 +18,10 @@ if (isset($_POST['save_department'])) {
 if (isset($_POST['update_department'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $detail = mysqli_real_escape_string($db, $_POST['detail']);
+    $hod = mysqli_real_escape_string($db, $_POST['hod']);
     $id = $_POST['id'];
 
-    if (mysqli_query($db, "UPDATE department SET name='$name', detail='$detail' WHERE id=$id")) {
+    if (mysqli_query($db, "UPDATE department SET name='$name', detail='$detail', hod='$hod' WHERE id=$id")) {
         $_SESSION['status'] = "Information Updated successfully";
         echo ("<script>window.location.href='index.php?tab=department';</script>");
     } else {

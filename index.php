@@ -132,6 +132,11 @@ if (isset($_SESSION['loginuser'])) {
                                         }; ?>" href="index.php?tab=department">
                             <li><i class="fa fa-school"></i>Departments</li>
                         </a>
+                        <a class="tab <?php if ($tab == "journal") {
+                                            echo "active";
+                                        }; ?>" href="index.php?tab=journal">
+                            <li><i class="fa fa-book"></i>Journals/Articles</li>
+                        </a>
                         <a class="tab <?php if ($tab == "youtube") {
                                             echo "active";
                                         }; ?>" href="index.php?tab=youtube">
@@ -153,8 +158,9 @@ if (isset($_SESSION['loginuser'])) {
             </div>
             <div class="sec-sub col-md-10 p-0">
                 <div class="head-sec p-3 px-4">
-                    <div>
-                        <p>Contact Support: +2349061881743</p>
+                    <div class="row">
+                        <p class="mr-2">Contact Support: +2349061881743</p>
+                        <p class="">| Note: Changes Here reflects directly on the website</p>
                     </div>
                     <div class="head-right">
                         <i class="fa fa-user-circle "></i>
@@ -164,7 +170,6 @@ if (isset($_SESSION['loginuser'])) {
 
                 </div>
                 <div class="sec-body">
-                    <small class="text-danger">Note: Changes Here reflects directly on the website</small>
                     <?php require('message.php');  ?>
                     <div class="tab-content container">
                         <?php if (isset($_GET['tab'])) {
@@ -219,6 +224,11 @@ if (isset($_SESSION['loginuser'])) {
                                                     echo "active";
                                                 } ?>" id="setting">
                             <?php include('setting.php'); ?>
+                        </div>
+                        <div class="tab-pane <?php if ($tab == "journal") {
+                                                    echo "active";
+                                                } ?>" id="journal">
+                            <?php include('journal.php'); ?>
                         </div>
                     </div>
                 </div>

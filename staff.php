@@ -7,6 +7,7 @@ if (isset($_POST['save_staff'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $contact = mysqli_real_escape_string($db, $_POST['contact']);
     $position = mysqli_real_escape_string($db, $_POST['position']);
+    $department = mysqli_real_escape_string($db, $_POST['department']);
 
     // Image Upload
     $image_folder = 'uploads/';
@@ -16,7 +17,7 @@ if (isset($_POST['save_staff'])) {
     $imagesize = $_FILES["post_image"]['size'];
     $imagetmp = $_FILES["post_image"]['tmp_name'];
     if ($ext === "") {
-        $query = "INSERT INTO staff(name, contact, position) VALUES ('$name', '$contact', '$position')";
+        $query = "INSERT INTO staff(name, contact, position, department) VALUES ('$name', '$contact', '$position', '$department')";
         if ($sql = mysqli_query($db, $query)) {
             $_SESSION['status'] = "Staff added successfully";
             echo ("<script>window.location.href='index.php?tab=staff';</script>");
@@ -27,7 +28,7 @@ if (isset($_POST['save_staff'])) {
         echo 'File type not supported';
     } else {
         $upload = move_uploaded_file($imagetmp, $path);
-        $query = "INSERT INTO staff(name, contact, position, image) VALUES ('$name', '$contact', '$position', '$image_name')";
+        $query = "INSERT INTO staff(name, contact, position, department, image) VALUES ('$name', '$contact', '$position',  '$department', '$image_name')";
         if ($sql = mysqli_query($db, $query)) {
             $_SESSION['status'] = "Staff added successfully";
             echo ("<script>window.location.href='index.php?tab=staff';</script>");
@@ -42,7 +43,7 @@ if (isset($_POST['update_staff'])) {
     $contact = mysqli_real_escape_string($db, $_POST['contact']);
     $position = mysqli_real_escape_string($db, $_POST['position']);
     $id = $_POST['id'];
-    if (mysqli_query($db, "UPDATE staff SET name='$name', contact='$contact', position='$position'  WHERE id=$id")) {
+    if (mysqli_query($db, "UPDATE staff SET name='$name', contact='$contact', position='$position', department='$department'  WHERE id=$id")) {
         $_SESSION['status'] = "Staff updated successfully";
         echo ("<script>window.location.href='index.php?tab=staff';</script>");
     } else {
@@ -71,6 +72,7 @@ if (isset($_GET['del_staff'])) {
                 <th>Name</th>
                 <th>Conatct</th>
                 <th>Position</th>
+                <th>Department</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -80,6 +82,7 @@ if (isset($_GET['del_staff'])) {
                 <td class="col-md-3"><?php echo $row['name'] ?></td>
                 <td class="col-md-2"><?php echo $row['contact'] ?></td>
                 <td class="col-md-2"><?php echo $row['position'] ?></td>
+                <td class="col-md-2"><?php echo $row['department'] ?></td>
                 <td class="col-md-2">
                     <img src="uploads/<?php echo $row['image'] ?>" class="w-50">
                 </td>
@@ -116,6 +119,8 @@ if (isset($_GET['del_staff'])) {
             $record = mysqli_fetch_array($rec);
             $new_name = $record['name'];
             $new_contact = $record['contact'];
+            $new_position = $record['position'];
+            $new_department = $record['department'];
             $new_id = $record["id"];
         } ?>
         <div class="sent-notification"></div>
@@ -135,14 +140,35 @@ if (isset($_GET['del_staff'])) {
         </div>
         <div class="form-group">
             <select name="position" class="form-control">
-                <option value="--Position/Category">--Position/Category--</option>
+                <option value="--Position/Category"><?php if (isset($_GET["edit_post"])) {
+                                                        $edit_state == true;
+                                                        echo $new_position;
+                                                    } else {
+                                                        echo "--Position/Category--";
+                                                    } ?></option>
                 <option value="Teacher">Teacher</option>
+                <option value="Lecturer">Lecturer</option>
                 <option value="Board of Governor">Board of Governor</option>
                 <option value="Non-Academic Staff">Non-Academic Staff</option>
                 <option value="HOD">HOD</option>
                 <option value="Provost">Provost</option>
                 <option value="Proprietor">Proprietor</option>
+                <option value="Dean">Dean</option>
+                <option value="Registrar">Registrar</option>
+                <option value="Bursar">Bursar</option>
+                <option value="Secretary">Secretary</option>
+                <option value="Co-ordinator">Co-ordinator</option>
+                <option value="Adviser">Adviser</option>
+                <option value="Librarian">Librarian</option>
+                <option value="Chaplain">Chaplain</option>
             </select>
+        </div>
+        <div class="form-group form-cont">
+            <input name="department" class="form-control" placeholder="Department" value="<?php if (isset($_GET["edit_post"])) {
+                                                                                                $edit_state == true;
+                                                                                                echo $new_department;
+                                                                                            } ?>">
+
         </div>
         <div class="form-group">
             <input name="post_image" type="file" id="gallery_images">
