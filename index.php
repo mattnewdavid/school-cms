@@ -159,7 +159,7 @@ if (isset($_SESSION['loginuser'])) {
             <div class="sec-sub col-md-10 p-0">
                 <div class="head-sec p-3 px-4">
                     <div class="row">
-                        <p class="mr-2">Contact Support: +2349061881743</p>
+                        <p class="mr-2">Contact Support: +2349014050998</p>
                         <p class="">| Note: Changes Here reflects directly on the website</p>
                     </div>
                     <div class="head-right">
