@@ -7,4 +7,5 @@ $(document).ready(function() {
   $("#departmentdataTable").DataTable();
   $("#calendardataTable").DataTable();
   $("#gallerydataTable").DataTable();
+  $("#journaldataTable").DataTable();
 });

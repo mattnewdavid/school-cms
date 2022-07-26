@@ -19,6 +19,9 @@ $department = mysqli_query($db, "SELECT * FROM department ORDER BY `id` DESC");
 
 $video = mysqli_query($db, "SELECT * FROM videos ORDER BY `id` DESC");
 
+$journal = mysqli_query($db, "SELECT * FROM journal ORDER BY `id` DESC");
+
+
 
 if ($data = mysqli_fetch_array($school)) {
     $school_id = $data['id'];

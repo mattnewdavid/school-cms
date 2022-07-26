@@ -40,6 +40,12 @@ if (isset($_SESSION['loginuser'])) {
                 plugins: ["advlist autolink link image lists charmap print preview hr anchorpagebreak", "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", "table contextmenu directionality emoticons paste textcolor code"],
                 toolba2: "| link unlink anchor | image media | forecolor backcolor | "
             });
+            tinymce.init({
+                selector: '#journaltextarea',
+                height: 500,
+                plugins: ["advlist autolink link image lists charmap print preview hr anchorpagebreak", "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking", "table contextmenu directionality emoticons paste textcolor code"],
+                toolba2: "| link unlink anchor | image media | forecolor backcolor | "
+            });
         </script>
 
     </head>
