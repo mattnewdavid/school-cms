@@ -43,6 +43,22 @@ if (isset($_GET['del_video'])) {
 
 <div class="container-info mb-5">
     <h4>How to get Youtube Video Embed Links</h4>
+    <p>Follow the steps below after opening Video on Youtube</p>
+    <div class="my-2">
+        <p>1. Click on the <strong>Share</strong> button underneath the video</p>
+        <img src="yt-1.PNG">
+    </div>
+    <div class="my-2">
+        <p>2. Click on <strong>Embed</strong></p>
+        <img src="yt-2.PNG">
+    </div>
+    <div class="my-2">
+        <p>3. Highlight and copy the embed link which is the value of the <strong>src</strong> attribute. The link selected in the image below <i class="fa fa-arrow-down"></i></p>
+        <img class="w-75" src="yt-3.PNG">
+    </div>
+    <div class="my-2">
+        <p>4. Paste the link in the Link field under the Add New Video block below. Also copy and paste the title of the Video and paste it in the Title field.</p>
+    </div>
 </div>
 
 <div class="inner-section">

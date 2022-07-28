@@ -29,7 +29,7 @@ if (isset($_POST['save_journal'])) {
         echo 'File type not supported';
     } else {
         $upload = move_uploaded_file($imagetmp, $path);
-        $query = "INSERT INTO journal(title, description, author) VALUES ('$title', '$description', '$author')";
+        $query = "INSERT INTO journal(title, description, author, file_path) VALUES ('$title', '$description', '$author', '$image_name')";
         if ($sql = mysqli_query($db, $query)) {
             $_SESSION['status'] = "Journal added successfully";
             echo ("<script>window.location.href='index.php?tab=journal';</script>");
@@ -91,8 +91,8 @@ if (isset($_GET['del_journal'])) {
                     <td class="col-md-3">
 
                         <!-- <a href="index.php?tab=news&edit_post=<?php echo $row['id']; ?>#posts"><button class="btn btn-custom-secondary">Edit</button></a> -->
-                        <a href="index.php?tab=news&edit_post=<?php echo $row['id']; ?>#form_target"><button class="btn btn-custom-secondary"><i class="fas fa-edit"></i></button></a>
-                        <a href="index.php?tab=news&del_journal=<?php echo $row['id']; ?>#posts"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+                        <a href="index.php?tab=journal&edit_post=<?php echo $row['id']; ?>#form_target"><button class="btn btn-custom-secondary"><i class="fas fa-edit"></i></button></a>
+                        <a href="index.php?tab=journal&del_journal=<?php echo $row['id']; ?>#posts"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                         <!-- <a href="index.php?tab=news&del_post=<?php echo $row['id']; ?>#posts"><button class="btn btn-danger">Delete</button></a> -->
                     </td>
                 </tr>
