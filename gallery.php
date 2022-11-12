@@ -73,6 +73,17 @@ if (isset($_POST['save_carousel'])) {
     }
 }
 
+if (isset($_GET['del_carousel'])) {
+    $del_id = $_GET['del_carousel'];
+
+    if (mysqli_query($db, "DELETE FROM carousel WHERE id=$del_id")) {
+        $_SESSION['status'] = "Image deleted successfully";
+        echo ("<script>window.location.href='index.php?tab=gallery';</script>");
+    } else {
+        $_SESSION = 'ERROR:' . mysqli_error($db);
+    }
+}
+
 ?>
 
 <div class="inner-section">
@@ -113,7 +124,7 @@ if (isset($_POST['save_carousel'])) {
                     <div class="col-md-3 p-0 position-relative">
                         <img src="uploads/<?php echo $select['img_path'] ?>" class="w-100">
 
-                        <a href="index.php?tab=gallery&del_image=<?php echo $select['id']; ?>#"><button class="btn btn-danger position-absolute" style="top:0px ; right: 0px"><i class="fa fa-trash"></i></button></a>
+                        <a href="index.php?tab=gallery&del_carousel=<?php echo $select['id']; ?>#"><button class="btn btn-danger position-absolute" style="top:0px ; right: 0px"><i class="fa fa-trash"></i></button></a>
 
                     </div>
 
